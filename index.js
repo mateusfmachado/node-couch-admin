@@ -40,6 +40,9 @@ Admin.prototype._request = function (method, url, data, headers, cb, raw) {
 Admin.prototype.getUser = function (user, cb) {
   this._request('GET', this.user_db + '/' + this._username(user), null, null, cb);
 }
+Admin.prototype.getAllUsers = function (user, cb) {
+  this._request('GET', this.user_db + '/_all_docs' , null, null, cb);
+}
 Admin.prototype.verifyUser = function (user, password, cb) {
   this._request('POST', this.session_db, { name: user, password: password }, null, cb, function (res, body) {
     var cookie = '';
